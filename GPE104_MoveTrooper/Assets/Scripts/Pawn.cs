@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
+    float minX = -10f;
+    float maxX = 10f;
+    float minY = -5f;
+    float maxY = 5f;
     public float baseSpeed;
     public float moveSpeed;
     public float booster;
@@ -28,6 +32,8 @@ public class Pawn : MonoBehaviour
         transform.position = transform.position + (transform.up * moveSpeed) * Time.deltaTime;
 
     }
+
+
 
     public void MoveBackward(float moveSpeed)
     {

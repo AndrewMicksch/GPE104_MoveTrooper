@@ -18,11 +18,11 @@ public class Controller : MonoBehaviour
     private void MakeDecisions()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
             pawn.moveSpeed = pawn.moveSpeed * pawn.booster;
         }
-        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        else if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
             pawn.moveSpeed = pawn.baseSpeed;
         }
@@ -53,19 +53,22 @@ public class Controller : MonoBehaviour
             pawn.MoveBackward(pawn.moveSpeed);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             pawn.HorizontalLeft(pawn.moveSpeed);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             pawn.HorizontalRight(pawn.moveSpeed);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             pawn.VerticalUp(pawn.moveSpeed);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             pawn.VerticalDown(pawn.moveSpeed);
         }
