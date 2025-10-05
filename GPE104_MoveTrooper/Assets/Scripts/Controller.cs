@@ -45,16 +45,16 @@ public class Controller : MonoBehaviour
         }
 
         // move ship left
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.Q))
         {
-            Debug.Log("A is key is Down");
+            Debug.Log("Q is key is Down");
             pawn.MoveLeft(pawn.moveSpeed);
         }
 
         //move ship right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.E))
         {
-            Debug.Log("D is key is Down");
+            Debug.Log("E is key is Down");
             pawn.MoveRight(pawn.moveSpeed);
         }
 
@@ -94,15 +94,15 @@ public class Controller : MonoBehaviour
         }
 
         //rotates the ship left and right
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("E is held");
+            Debug.Log("D is held");
             pawn.RotateClockwise(pawn.turnSpeed);
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Q is heald");
+            Debug.Log("A is held");
             pawn.RotateCounterClockwise(pawn.turnSpeed);
         }
 
