@@ -24,20 +24,16 @@ public class Pawn : MonoBehaviour
 
     }
 
-    
+
 
     public void MoveForward(float moveSpeed)
     {
         // Change pawns position | In forward direction, Magnitude of movespeed
         transform.position = transform.position + (transform.up * moveSpeed) * Time.deltaTime;
-
     }
-
-
 
     public void MoveBackward(float moveSpeed)
     {
-
         transform.position = transform.position + (-transform.up * moveSpeed) * Time.deltaTime;
     }
 
@@ -54,14 +50,14 @@ public class Pawn : MonoBehaviour
 
     public void RotateCounterClockwise(float rotateValue)
     {
-        transform.Rotate( 0.0f, 0.0f, rotateValue * Time.deltaTime);
+        transform.Rotate(0.0f, 0.0f, rotateValue * Time.deltaTime);
     }
     public void RotateClockwise(float rotateValue)
     {
         transform.Rotate(0.0f, 0.0f, -rotateValue * Time.deltaTime);
     }
 
-
+    //TODO set up the values for world space movement
     public void HorizontalLeft(float moveSpeed)
     {
         transform.position = transform.position + (-Vector3.right * moveSpeed) * Time.deltaTime;
@@ -81,7 +77,12 @@ public class Pawn : MonoBehaviour
     {
         transform.position = transform.position + (-Vector3.up * moveSpeed) * Time.deltaTime;
     }
+    public void shipBlink()
+        {
+            //Set the locations it can teleport to
+        float randomX = Random.Range(minX, maxX);
+        float randomY = Random.Range(minY, maxY);
+        transform.position = new Vector2(randomX, randomY);
+        }
 
-
-   
 }
