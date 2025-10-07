@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 985479724}
   - component: {fileID: 985479723}
   - component: {fileID: 985479726}
+  - component: {fileID: 985479727}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -447,6 +448,22 @@ MonoBehaviour:
   moveSpeed: 6
   booster: 3
   turnSpeed: 120
+  health: {fileID: 985479727}
+  death: {fileID: 0}
+--- !u!114 &985479727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985479721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0910cf3e9539dbb43b92dd24ac5a8135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComp
+  currentHP: 10
+  maxHP: 20
 --- !u!1 &1518979174
 GameObject:
   m_ObjectHideFlags: 0
