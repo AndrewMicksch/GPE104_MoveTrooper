@@ -17,6 +17,8 @@ public class HealthComp : MonoBehaviour
     {
         
     }
+
+   
     public void TakeDamage(float amount)
         {
         currentHP = currentHP - amount;
@@ -52,6 +54,6 @@ public class HealthComp : MonoBehaviour
             return false;
         }
     }
-
+    
    
 }
