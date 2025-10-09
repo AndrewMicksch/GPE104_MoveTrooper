@@ -6,18 +6,21 @@ public class Pawn : MonoBehaviour
     float maxX = 10f;
     float minY = -5f;
     float maxY = 5f;
+
     [Header("Movement")]
     public float baseSpeed;
     public float moveSpeed;
     public float booster;
     public float turnSpeed;
 
+    [Header("Components")]
     public HealthComp health;
     public Death death;
 
     // Start is called before the first frame update
     void Start()
     {
+        //load health and death component
         health = GetComponent<HealthComp>();
 
         death = GetComponent<Death>();
