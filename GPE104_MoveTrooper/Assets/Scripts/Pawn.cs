@@ -22,7 +22,6 @@ public class Pawn : MonoBehaviour
     {
         //load health and death component
         health = GetComponent<HealthComp>();
-
         death = GetComponent<Death>();
     }
 

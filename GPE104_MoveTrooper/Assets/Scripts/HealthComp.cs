@@ -9,7 +9,7 @@ public class HealthComp : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -39,9 +39,14 @@ public class HealthComp : MonoBehaviour
 
     //TODO handle death in health component
     public void Die()
+    {
+        Death death = GetComponent<Death>();
+        if (death != null)
         {
-        
+            death.Die();
         }
+        
+    }
 
     public bool IsAlive()
     { 
