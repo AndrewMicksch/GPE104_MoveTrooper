@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Pawn : MonoBehaviour
 {
@@ -6,17 +8,30 @@ public class Pawn : MonoBehaviour
     float maxX = 10f;
     float minY = -5f;
     float maxY = 5f;
+
+    [Header("Movement")]
     public float baseSpeed;
     public float moveSpeed;
     public float booster;
     public float turnSpeed;
+    public float iFrameDuration;
 
+    [Header("Components")]
+    public HealthComp health;
+    public Death death;
+    public Collider2D hitbox;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //load health and death component
+        health = GetComponent<HealthComp>();
+        death = GetComponent<Death>();
+        hitbox = GetComponent<Collider2D>();
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -24,8 +39,56 @@ public class Pawn : MonoBehaviour
 
     }
 
+    // TODO use these for future pawns.
+    public void MoveTowards (Vector3 pointToMoveTowards)
+    {
+        //find vecotor towards that point
+        Vector3 moveVector = pointToMoveTowards - transform.position;
+        //normalize
+        moveVector.Normalize();
+        //multiply
+        moveVector *= moveSpeed * Time.deltaTime;
+        //move that vector form my current position
+        transform.position = transform.position + moveVector;
+    }
+    public void MoveTowards(GameObject objectToMoveTowards)
+    {
+        MoveTowards(objectToMoveTowards.transform);
+    }
+    public void MoveTowards(Transform transformToMoveTowards)
+    {
 
+    }
 
+    public void MoveTowards(Controller controllerToMoveTowards)
+    {
+        MoveTowards(controllerToMoveTowards.pawn);
+    }
+    public void MoveTowards(Pawn pawnToMoveTowards)
+    {
+        MoveTowards(pawnToMoveTowards.gameObject);
+    }
+
+    //Invincibility
+    public void ShieldMode(float iFrameDuration)
+    {
+        StartCoroutine(TempDisableHitbox());
+    }
+    //TODO: add a new sprite for shielding.
+    private IEnumerator TempDisableHitbox()
+    {
+        if (hitbox != null)
+        {
+            hitbox.enabled = false;
+            Debug.Log("Disabled hitbox");
+
+            yield return new WaitForSeconds(iFrameDuration);
+
+            hitbox.enabled = true;
+            Debug.Log("renabled hitbox");
+
+        }
+    }
     public void MoveForward(float moveSpeed)
     {
         // Change pawns position | In forward direction, Magnitude of movespeed
