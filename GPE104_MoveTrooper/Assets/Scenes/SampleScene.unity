@@ -199,8 +199,10 @@ MonoBehaviour:
   moveSpeed: 3
   booster: 3
   turnSpeed: 360
+  iFrameDuration: 0
   health: {fileID: 0}
   death: {fileID: 0}
+  hitbox: {fileID: 0}
 --- !u!58 &493166136
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -821,8 +823,10 @@ MonoBehaviour:
   moveSpeed: 6
   booster: 3
   turnSpeed: 120
+  iFrameDuration: 5
   health: {fileID: 985479727}
   death: {fileID: 985479730}
+  hitbox: {fileID: 985479731}
 --- !u!114 &985479727
 MonoBehaviour:
   m_ObjectHideFlags: 0

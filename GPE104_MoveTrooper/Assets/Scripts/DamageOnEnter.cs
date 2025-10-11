@@ -8,14 +8,7 @@ public class DamageOnEnter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (isInstantKill)
-        {
-            void OnTriggerEnter2D (Collider2D other)
-            {
-                HealthComp otherDeath = other.gameObject.GetComponent<HealthComp>();
-                
-            }
-        }
+       
     }
 
     // Update is called once per frame

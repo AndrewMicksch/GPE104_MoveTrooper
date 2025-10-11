@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Pawn : MonoBehaviour
 {
@@ -12,10 +14,13 @@ public class Pawn : MonoBehaviour
     public float moveSpeed;
     public float booster;
     public float turnSpeed;
+    public float iFrameDuration;
 
     [Header("Components")]
     public HealthComp health;
     public Death death;
+    public Collider2D hitbox;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +28,7 @@ public class Pawn : MonoBehaviour
         //load health and death component
         health = GetComponent<HealthComp>();
         death = GetComponent<Death>();
+        hitbox = GetComponent<Collider2D>();
     }
 
     
@@ -61,6 +67,27 @@ public class Pawn : MonoBehaviour
     public void MoveTowards(Pawn pawnToMoveTowards)
     {
         MoveTowards(pawnToMoveTowards.gameObject);
+    }
+
+    //Invincibility
+    public void ShieldMode(float iFrameDuration)
+    {
+        StartCoroutine(TempDisableHitbox());
+    }
+    //TODO: add a new sprite for shielding.
+    private IEnumerator TempDisableHitbox()
+    {
+        if (hitbox != null)
+        {
+            hitbox.enabled = false;
+            Debug.Log("Disabled hitbox");
+
+            yield return new WaitForSeconds(iFrameDuration);
+
+            hitbox.enabled = true;
+            Debug.Log("renabled hitbox");
+
+        }
     }
     public void MoveForward(float moveSpeed)
     {

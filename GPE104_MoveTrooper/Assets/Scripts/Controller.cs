@@ -94,6 +94,12 @@ public class Controller : MonoBehaviour
             pawn.RotateCounterClockwise(pawn.turnSpeed);
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            pawn.ShieldMode(pawn.iFrameDuration);
+            Debug.Log("Space is pressed");
+        } 
+
         
         
     }
