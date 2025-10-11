@@ -23,12 +23,12 @@ public class DotControl : MonoBehaviour
             //TODO: Tell Pawn to Move Forward
             dotter.MoveBackward(dotter.moveSpeed);
         }
-        if (Input.GetKey(KeyCode.Keypad4))
+        if (Input.GetKey(KeyCode.Keypad6))
         {
             //TODO: Tell Pawn to Move Forward
             dotter.RotateClockwise(dotter.turnSpeed);
         }
-        if (Input.GetKey(KeyCode.Keypad6))
+        if (Input.GetKey(KeyCode.Keypad4))
         {
             //TODO: Tell dotter to Move Forward
             dotter.RotateCounterClockwise(dotter.turnSpeed);
