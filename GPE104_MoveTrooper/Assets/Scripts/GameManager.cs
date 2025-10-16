@@ -1,9 +1,14 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager core;
+    public int numOfTargets;
+
+    public list<DamageOnEnter> damageZones;
+
     void Awake()
     {
         if (core == null)
