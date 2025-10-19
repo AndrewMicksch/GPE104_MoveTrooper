@@ -6,6 +6,8 @@ public class InstantiatTest : MonoBehaviour
 
     public GameObject prefabToCopy;
     public Controller controllerToConnect;
+    public GameObject prefabBullet;
+    public Controller bulletControlToConnect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,10 +30,31 @@ public class InstantiatTest : MonoBehaviour
                 {
                     controllerToConnect.pawn = pawnComponent;
                 }
+
+                //start of Bullet Code
+                //TODO fix code
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    GameObject tempBull;
+                    tempBull = Instantiate(prefabBullet, tempPawn.transform.up, tempPawn.transform.rotation) as GameObject;
+                    if( tempBull != null)
+                    {
+                        Pawn bullComponent = tempBull.GetComponent<Pawn>();
+                        if (tempBull != null)
+                        {
+                            bulletControlToConnect.pawn = bullComponent;
+                        }
+                        
+                    }
+                }
+
             }
            
           
-        }   
+        }  
+        
+        //new if for spawning a bullet
+        
     }
 
     

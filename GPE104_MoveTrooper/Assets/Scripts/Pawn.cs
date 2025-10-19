@@ -16,11 +16,20 @@ public class Pawn : MonoBehaviour
     public float turnSpeed;
     public float iFrameDuration;
 
+
     [Header("Components")]
     public HealthComp health;
     public Death death;
     public Collider2D hitbox;
     
+
+    //add a location for bullets to spawn and a speed.
+    public float bulletSpeed;
+    //public float bulletSpawn;
+    //public GameObject bulletShot;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +40,7 @@ public class Pawn : MonoBehaviour
         hitbox = GetComponent<Collider2D>();
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
@@ -40,7 +49,7 @@ public class Pawn : MonoBehaviour
     }
 
     // TODO use these for future pawns.
-    public void MoveTowards (Vector3 pointToMoveTowards)
+    public void MoveTowards(Vector3 pointToMoveTowards)
     {
         //find vecotor towards that point
         Vector3 moveVector = pointToMoveTowards - transform.position;
@@ -141,11 +150,24 @@ public class Pawn : MonoBehaviour
         transform.position = transform.position + (-Vector3.up * moveSpeed) * Time.deltaTime;
     }
     public void shipBlink()
-        {
-            //Set the locations it can teleport to
+    {
+        //Set the locations it can teleport to
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         transform.position = new Vector2(randomX, randomY);
-        }
+    }
+
+    //introduce a bullet movement
+    public void Shoot(float bulletSpeed)
+    {
+        transform.position = transform.position + (transform.up * bulletSpeed) * Time.deltaTime;
+    }
+    //public void SpawnBullet(float bulletSpawn)
+    //{
+    //    transform.position = transform.postition + (transform.up + bulletSpawn) * Time.deltaTime;
+    //    GameObject tempBull;
+    //    tempBull = Instantiate(bulletShot, bulletSpawn.transform.position, Quaternion.identity) as GameObject;
+    //}
+
 
 }

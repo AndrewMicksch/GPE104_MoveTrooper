@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class DamageOnEnter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      
     }
     
     void OnTriggerEnter2D (Collider2D other)
@@ -27,6 +28,15 @@ public class DamageOnEnter : MonoBehaviour
             Death otherDeath = other.gameObject.GetComponent<Death>();
             if (otherDeath != null)
             {
+                HealthComp otherHealth = other.gameObject.GetComponent<HealthComp>();
+                if (otherHealth != null)
+                {
+                    if (otherHealth.player == true)
+                    {
+                        GameManager.core.LoseGame();
+                        otherDeath.Die();
+                    }
+                }
                 otherDeath.Die();
             }
 
@@ -56,6 +66,9 @@ public class DamageOnEnter : MonoBehaviour
         {
             GameManager.core.damageZones.Remove(this);
         }
+
+        
+        
     }    
         
 }
