@@ -17,8 +17,13 @@ public class DamageOnEnter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+
     }
+    void OnDestroy()
+    {
+        GameManager.core.damageZones.Remove(this);
+    }
+    
     
     void OnTriggerEnter2D (Collider2D other)
     {
@@ -62,13 +67,11 @@ public class DamageOnEnter : MonoBehaviour
             
         }
 
-        void OnDestroy()
-        {
-            GameManager.core.damageZones.Remove(this);
-        }
+        
 
-        
-        
+
+
+
     }    
         
 }

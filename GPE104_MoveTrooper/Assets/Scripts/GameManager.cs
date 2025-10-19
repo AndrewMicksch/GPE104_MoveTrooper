@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
       if (damageZones != null)
         {
-           
+            WinGame();
         }
     }
 
@@ -47,8 +48,13 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
-        Debug.Log("I soar above all.");
+        if (damageZones.Count <= 0)
+        {
+            Debug.Log("I soar above all.");
+        }
     }
+
+    
     public void LoseGame()
     {
         Debug.Log("How have I fallen?");
