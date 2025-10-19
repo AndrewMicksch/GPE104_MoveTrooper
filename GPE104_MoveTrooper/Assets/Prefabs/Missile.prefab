@@ -120,7 +120,11 @@ MonoBehaviour:
   death: {fileID: 504983866728422793}
   hitbox: {fileID: 2853846030692243664}
   bullet: {fileID: 0}
+  prefabBullet1: {fileID: 0}
+  prefabBullet2: {fileID: 0}
+  bulletControlToConnect: {fileID: 0}
   bulletSpeed: 3
+  bulletSpawn: 1
 --- !u!114 &504983866728422793
 MonoBehaviour:
   m_ObjectHideFlags: 0

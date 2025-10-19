@@ -6,6 +6,9 @@ public class Controller : MonoBehaviour
 {
     public Pawn pawn;
     public Pawn bull;
+    public GameObject bulletSpawn;
+    private Vector3 currentPosition;
+    
 
     [Header("spawner")]
     public GameObject prefabToCopy;
@@ -35,9 +38,12 @@ public class Controller : MonoBehaviour
                 if (tempPawn != null)
                 {
                     controllerToConnect.pawn = pawnComponent;
+
                 }
             }
         }
+
+
         if (pawn != null)
         {
             MakeDecisions();
@@ -145,23 +151,43 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
+            //pawn.ShootType1(bull.bulletSpawn);
 
             GameObject tempBull;
-            tempBull = Instantiate(prefabBullet1, pawn.transform.up, pawn.transform.rotation) as GameObject;
-            if (tempBull != null)
+            if (pawn == true)
             {
-                Pawn bullComponent = tempBull.GetComponent<Pawn>();
+
+
+                tempBull = Instantiate(prefabBullet1, pawn.transform.up, pawn.transform.rotation) as GameObject;
                 if (tempBull != null)
                 {
-                    bulletControlToConnect.bull = bullComponent;
-                }
+                    Pawn bullComponent = tempBull.GetComponent<Pawn>();
+                    if (tempBull != null)
+                    {
+                        bulletControlToConnect.bull = bullComponent;
+                    }
 
+                }
             }
         }
 
+        //GameObject tempBull;
+
+        //tempBull = Instantiate(prefabBullet1, pawn.transform.position, pawn.transform.rotation) as GameObject;
+        //if (tempBull != null)
+        //{
+        //    Pawn bullComponent = tempBull.GetComponent<Pawn>();
+        //    if (tempBull != null)
+        //    {
+        //        bulletControlToConnect.bull = bullComponent;
+        //    }
+
+    
+
+
         if (Input.GetKeyDown(KeyCode.K))
         {
-
+            //pawn.ShootType2(bull.bulletSpawn);
             GameObject tempBull;
             tempBull = Instantiate(prefabBullet2, pawn.transform.up, pawn.transform.rotation) as GameObject;
             if (tempBull != null)
@@ -176,6 +202,7 @@ public class Controller : MonoBehaviour
         }
 
 
+
         if (bull != null)
         {
 
@@ -183,12 +210,7 @@ public class Controller : MonoBehaviour
         }
 
 
-    }
-
-   
-    
-    
-    
+    }  
 }
     
 

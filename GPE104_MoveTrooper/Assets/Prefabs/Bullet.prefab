@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 896575089435428989}
   - component: {fileID: 8812139906235734742}
   - component: {fileID: 5569240014495013631}
-  - component: {fileID: 5453065116080719388}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -115,7 +114,12 @@ MonoBehaviour:
   health: {fileID: 0}
   death: {fileID: 5569240014495013631}
   hitbox: {fileID: 896575089435428989}
+  bullet: {fileID: 0}
+  prefabBullet1: {fileID: 0}
+  prefabBullet2: {fileID: 0}
+  bulletControlToConnect: {fileID: 0}
   bulletSpeed: 3
+  bulletSpawn: 1
 --- !u!61 &896575089435428989
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,30 +193,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
   player: 0
---- !u!50 &5453065116080719388
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165448099588049286}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

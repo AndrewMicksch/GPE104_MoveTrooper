@@ -8,6 +8,7 @@ public class Pawn : MonoBehaviour
     float maxX = 10f;
     float minY = -5f;
     float maxY = 5f;
+    private float pawnLocation;
 
     [Header("Movement")]
     public float baseSpeed;
@@ -22,9 +23,14 @@ public class Pawn : MonoBehaviour
     public Death death;
     public Collider2D hitbox;
     public BulletClass bullet;
+    public GameObject prefabBullet1;
+    public GameObject prefabBullet2;
+    public Controller bulletControlToConnect;
 
     //add a location for bullets to spawn and a speed.
+    [Header("Bullets")]
     public float bulletSpeed;
+    public float bulletSpawn;
 
   
 
@@ -46,10 +52,10 @@ public class Pawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
-    // TODO use these for future pawns.
+        // TODO use these for future pawns.
     public void MoveTowards(Vector3 pointToMoveTowards)
     {
         //find vecotor towards that point
@@ -158,17 +164,46 @@ public class Pawn : MonoBehaviour
         transform.position = new Vector2(randomX, randomY);
     }
 
+
+    // Bullet spawn
+
+    public void ShootType1(float bulletSpawn)
+    {
+        //    GameObject tempBull;
+        //    transform.position = transform.position + (transform.up * bulletSpawn);
+        //    tempBull = Instantiate(prefabBullet1, transform.position, transform.rotation) as GameObject;
+        //    if (tempBull != null)
+        //    {
+        //        Pawn bullComponent = tempBull.GetComponent<Pawn>();
+        //        if (tempBull != null)
+        //        {
+        //            bulletControlToConnect.bull = bullComponent;
+        //        }
+
+        //    }
+    }
+    public void ShootType2(float bulletSpawn)
+    {
+        GameObject tempBull;
+        transform.position = transform.position + (transform.up * bulletSpawn);
+        tempBull = Instantiate(prefabBullet1, transform.position, transform.rotation) as GameObject;
+        if (tempBull != null)
+        {
+            Pawn bullComponent = tempBull.GetComponent<Pawn>();
+            if (tempBull != null)
+            {
+                bulletControlToConnect.bull = bullComponent;
+            }
+
+        }
+    }
+
     //introduce a bullet movement
     public void Shoot(float bulletSpeed)
     {
         transform.position = transform.position + (transform.up * bulletSpeed) * Time.deltaTime;
     }
-    //public void SpawnBullet(float bulletSpawn)
-    //{
-    //    transform.position = transform.postition + (transform.up + bulletSpawn) * Time.deltaTime;
-    //    GameObject tempBull;
-    //    tempBull = Instantiate(bulletShot, bulletSpawn.transform.position, Quaternion.identity) as GameObject;
-    //}
+   
 
 
 }
