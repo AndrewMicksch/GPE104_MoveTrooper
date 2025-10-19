@@ -10,7 +10,8 @@ public class Controller : MonoBehaviour
     [Header("spawner")]
     public GameObject prefabToCopy;
     public Controller controllerToConnect;
-    public GameObject prefabBullet;
+    public GameObject prefabBullet1;
+    public GameObject prefabBullet2;
     public Controller bulletControlToConnect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -144,9 +145,25 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            
+
             GameObject tempBull;
-            tempBull = Instantiate(prefabBullet, pawn.transform.up, pawn.transform.rotation) as GameObject;
+            tempBull = Instantiate(prefabBullet1, pawn.transform.up, pawn.transform.rotation) as GameObject;
+            if (tempBull != null)
+            {
+                Pawn bullComponent = tempBull.GetComponent<Pawn>();
+                if (tempBull != null)
+                {
+                    bulletControlToConnect.bull = bullComponent;
+                }
+
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+
+            GameObject tempBull;
+            tempBull = Instantiate(prefabBullet2, pawn.transform.up, pawn.transform.rotation) as GameObject;
             if (tempBull != null)
             {
                 Pawn bullComponent = tempBull.GetComponent<Pawn>();
@@ -167,6 +184,11 @@ public class Controller : MonoBehaviour
 
 
     }
+
+   
+    
+    
+    
 }
     
 

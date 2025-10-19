@@ -21,12 +21,12 @@ public class Pawn : MonoBehaviour
     public HealthComp health;
     public Death death;
     public Collider2D hitbox;
-    
+    public BulletClass bullet;
 
     //add a location for bullets to spawn and a speed.
     public float bulletSpeed;
-    //public float bulletSpawn;
-    //public GameObject bulletShot;
+
+  
 
 
 
@@ -38,6 +38,7 @@ public class Pawn : MonoBehaviour
         health = GetComponent<HealthComp>();
         death = GetComponent<Death>();
         hitbox = GetComponent<Collider2D>();
+        bullet = GetComponent<BulletClass>();
     }
 
 
