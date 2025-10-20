@@ -23,9 +23,6 @@ public class Pawn : MonoBehaviour
     public Death death;
     public Collider2D hitbox;
     public BulletClass bullet;
-    public GameObject prefabBullet1;
-    public GameObject prefabBullet2;
-    public Controller bulletControlToConnect;
 
     //add a location for bullets to spawn and a speed.
     [Header("Bullets")]
@@ -184,18 +181,18 @@ public class Pawn : MonoBehaviour
     }
     public void ShootType2(float bulletSpawn)
     {
-        GameObject tempBull;
-        transform.position = transform.position + (transform.up * bulletSpawn);
-        tempBull = Instantiate(prefabBullet1, transform.position, transform.rotation) as GameObject;
-        if (tempBull != null)
-        {
-            Pawn bullComponent = tempBull.GetComponent<Pawn>();
-            if (tempBull != null)
-            {
-                bulletControlToConnect.bull = bullComponent;
-            }
+        //    GameObject tempBull;
+        //    transform.position = transform.position + (transform.up * bulletSpawn);
+        //    tempBull = Instantiate(prefabBullet1, transform.position, transform.rotation) as GameObject;
+        //    if (tempBull != null)
+        //    {
+        //        Pawn bullComponent = tempBull.GetComponent<Pawn>();
+        //        if (tempBull != null)
+        //        {
+        //            bulletControlToConnect.bull = bullComponent;
+        //        }
 
-        }
+        //    }
     }
 
     //introduce a bullet movement

@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour
     public Pawn pawn;
     public Pawn bull;
     public GameObject bulletSpawn;
-    private Vector3 currentPosition;
+    public Transform currentLocal;
     
 
     [Header("spawner")]
@@ -156,8 +156,6 @@ public class Controller : MonoBehaviour
             GameObject tempBull;
             if (pawn == true)
             {
-
-
                 tempBull = Instantiate(prefabBullet1, pawn.transform.up, pawn.transform.rotation) as GameObject;
                 if (tempBull != null)
                 {
@@ -171,16 +169,7 @@ public class Controller : MonoBehaviour
             }
         }
 
-        //GameObject tempBull;
-
-        //tempBull = Instantiate(prefabBullet1, pawn.transform.position, pawn.transform.rotation) as GameObject;
-        //if (tempBull != null)
-        //{
-        //    Pawn bullComponent = tempBull.GetComponent<Pawn>();
-        //    if (tempBull != null)
-        //    {
-        //        bulletControlToConnect.bull = bullComponent;
-        //    }
+       
 
     
 

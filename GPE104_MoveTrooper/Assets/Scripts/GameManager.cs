@@ -50,14 +50,14 @@ public class GameManager : MonoBehaviour
     {
         if (damageZones.Count <= 0)
         {
-            Debug.Log("I soar above all.");
+            Debug.Log("Victory | I soar above all.");
         }
     }
 
     
     public void LoseGame()
     {
-        Debug.Log("How have I fallen?");
+        Debug.Log("Failure | How have I fallen?");
     }
     
 }
