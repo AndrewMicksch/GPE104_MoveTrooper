@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8469007787395671489}
   - component: {fileID: 6698454694868405116}
   - component: {fileID: 6759241660842070639}
+  - component: {fileID: 8997563342118249377}
   m_Layer: 0
   m_Name: HitZone
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5051152856386382470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0139, y: 3.0139, z: 0}
+  m_LocalPosition: {x: -1.7205162, y: 3.440417, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,3 +197,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComp
   currentHP: 6
   maxHP: 6
+  player: 0
+--- !u!114 &8997563342118249377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051152856386382470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ce7cc0f9db69f419b7b2ae1d22cdcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
+  player: 0
