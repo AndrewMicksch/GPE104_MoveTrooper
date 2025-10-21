@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MissleShooter
   damageDone: 3
-  effectArea: 2
+  effectArea: 4
   explosionLength: 2
   destroyOnHit: 1
   hitbox: {fileID: 0}
@@ -120,9 +120,6 @@ MonoBehaviour:
   death: {fileID: 504983866728422793}
   hitbox: {fileID: 2853846030692243664}
   bullet: {fileID: 0}
-  prefabBullet1: {fileID: 0}
-  prefabBullet2: {fileID: 0}
-  bulletControlToConnect: {fileID: 0}
   bulletSpeed: 3
   bulletSpawn: 1
 --- !u!114 &504983866728422793
