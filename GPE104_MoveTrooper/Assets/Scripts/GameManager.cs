@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     public static GameManager core;
 
     public List<DamageOnEnter> damageZones;
+    [Header("Timer")]
+    public float timeRemaining;
+    public float maxTime;
+    
 
     void Awake()
     {
@@ -27,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        timeRemaining = maxTime;
     }
 
     // Update is called once per frame
@@ -58,6 +62,11 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         Debug.Log("Failure | How have I fallen?");
+    }
+    
+    public void ResetTimer()
+    {
+        timeRemaining = maxTime;
     }
     
 }

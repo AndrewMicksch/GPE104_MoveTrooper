@@ -40,7 +40,6 @@ public class Pawn : MonoBehaviour
         death = GetComponent<Death>();
         hitbox = GetComponent<Collider2D>();
         bullet = GetComponent<BulletClass>();
-        spawnPoint = GetComponent<BulletSpawn>();
     }
 
 
