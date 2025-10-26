@@ -1,9 +1,21 @@
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
     public Pawn pawn;
+    public Pawn bull;
+    public GameObject bulletSpawn;
+    public Transform currentLocal;
+    
+
+    [Header("spawner")]
+    public GameObject prefabToCopy;
+    public Controller controllerToConnect;
+    public GameObject prefabBullet1;
+    public GameObject prefabBullet2;
+    public Controller bulletControlToConnect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,17 +25,51 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MakeDecisions();
+        //spawn the initial pawn
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GameObject tempPawn;
+            tempPawn = Instantiate(prefabToCopy, Vector3.zero, Quaternion.identity) as GameObject;
+
+            if (tempPawn != null)
+            {
+                Pawn pawnComponent = tempPawn.GetComponent<Pawn>();
+
+                if (tempPawn != null)
+                {
+                    controllerToConnect.pawn = pawnComponent;
+
+                }
+            }
+        }
+
+
+        if (pawn != null)
+        {
+            MakeDecisions();
+
+
+
+
+        }
     }
     private void MakeDecisions()
     {
-        //TODO Create the booster speed shifter
+
+
+        //Spawn the Pawn
+
+       
+
+                //TODO Create the booster speed shifter
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
-            pawn.moveSpeed = pawn.moveSpeed * pawn.booster;
+             pawn.moveSpeed = pawn.moveSpeed * pawn.booster;
         }
+
+
         //TODO make a way to reset to default speed after having boosted
-        else if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
             pawn.moveSpeed = pawn.baseSpeed;
         }
@@ -98,9 +144,62 @@ public class Controller : MonoBehaviour
         {
             pawn.ShieldMode(pawn.iFrameDuration);
             Debug.Log("Space is pressed");
-        } 
+        }
 
-        
-        
-    }
+        //Bullet instructions
+
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            //pawn.ShootType1(bull.bulletSpawn);
+
+            GameObject tempBull;
+            if (pawn == true)
+            {
+                tempBull = Instantiate(prefabBullet1, pawn.transform.up, pawn.transform.rotation) as GameObject;
+                if (tempBull != null)
+                {
+                    Pawn bullComponent = tempBull.GetComponent<Pawn>();
+                    if (tempBull != null)
+                    {
+                        bulletControlToConnect.bull = bullComponent;
+                    }
+
+                }
+            }
+        }
+
+       
+
+    
+
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            //pawn.ShootType2(bull.bulletSpawn);
+            GameObject tempBull;
+            tempBull = Instantiate(prefabBullet2, pawn.transform.up, pawn.transform.rotation) as GameObject;
+            if (tempBull != null)
+            {
+                Pawn bullComponent = tempBull.GetComponent<Pawn>();
+                if (tempBull != null)
+                {
+                    bulletControlToConnect.bull = bullComponent;
+                }
+
+            }
+        }
+
+
+
+        if (bull != null)
+        {
+
+            bull.Shoot(bull.bulletSpeed + pawn.moveSpeed);
+        }
+
+
+    }  
 }
+    
+

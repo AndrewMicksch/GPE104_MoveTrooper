@@ -4,6 +4,7 @@ public class HealthComp : MonoBehaviour
 {
     public float currentHP;
     public float maxHP;
+    public bool player;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,6 +44,11 @@ public class HealthComp : MonoBehaviour
         Death death = GetComponent<Death>();
         if (death != null)
         {
+            if (player != false)
+            {
+                GameManager.core.LoseGame();
+                death.Die();
+            }
             death.Die();
         }
         

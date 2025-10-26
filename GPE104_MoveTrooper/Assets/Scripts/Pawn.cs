@@ -8,6 +8,7 @@ public class Pawn : MonoBehaviour
     float maxX = 10f;
     float minY = -5f;
     float maxY = 5f;
+    private float pawnLocation;
 
     [Header("Movement")]
     public float baseSpeed;
@@ -16,11 +17,22 @@ public class Pawn : MonoBehaviour
     public float turnSpeed;
     public float iFrameDuration;
 
+
     [Header("Components")]
     public HealthComp health;
     public Death death;
     public Collider2D hitbox;
-    
+    public BulletClass bullet;
+
+    //add a location for bullets to spawn and a speed.
+    [Header("Bullets")]
+    public float bulletSpeed;
+    public float bulletSpawn;
+
+  
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,18 +41,19 @@ public class Pawn : MonoBehaviour
         health = GetComponent<HealthComp>();
         death = GetComponent<Death>();
         hitbox = GetComponent<Collider2D>();
+        bullet = GetComponent<BulletClass>();
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
-    // TODO use these for future pawns.
-    public void MoveTowards (Vector3 pointToMoveTowards)
+        // TODO use these for future pawns.
+    public void MoveTowards(Vector3 pointToMoveTowards)
     {
         //find vecotor towards that point
         Vector3 moveVector = pointToMoveTowards - transform.position;
@@ -141,11 +154,53 @@ public class Pawn : MonoBehaviour
         transform.position = transform.position + (-Vector3.up * moveSpeed) * Time.deltaTime;
     }
     public void shipBlink()
-        {
-            //Set the locations it can teleport to
+    {
+        //Set the locations it can teleport to
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
         transform.position = new Vector2(randomX, randomY);
-        }
+    }
+
+
+    // Bullet spawn
+
+    public void ShootType1(float bulletSpawn)
+    {
+        //    GameObject tempBull;
+        //    transform.position = transform.position + (transform.up * bulletSpawn);
+        //    tempBull = Instantiate(prefabBullet1, transform.position, transform.rotation) as GameObject;
+        //    if (tempBull != null)
+        //    {
+        //        Pawn bullComponent = tempBull.GetComponent<Pawn>();
+        //        if (tempBull != null)
+        //        {
+        //            bulletControlToConnect.bull = bullComponent;
+        //        }
+
+        //    }
+    }
+    public void ShootType2(float bulletSpawn)
+    {
+        //    GameObject tempBull;
+        //    transform.position = transform.position + (transform.up * bulletSpawn);
+        //    tempBull = Instantiate(prefabBullet1, transform.position, transform.rotation) as GameObject;
+        //    if (tempBull != null)
+        //    {
+        //        Pawn bullComponent = tempBull.GetComponent<Pawn>();
+        //        if (tempBull != null)
+        //        {
+        //            bulletControlToConnect.bull = bullComponent;
+        //        }
+
+        //    }
+    }
+
+    //introduce a bullet movement
+    public void Shoot(float bulletSpeed)
+    {
+        transform.position = transform.position + (transform.up * bulletSpeed) * Time.deltaTime;
+    }
+   
+
 
 }
