@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Pawn : MonoBehaviour
     float maxX = 10f;
     float minY = -5f;
     float maxY = 5f;
+    private Transform spawnPosition;
 
     [Header("Movement")]
     public float baseSpeed;
@@ -21,8 +23,9 @@ public class Pawn : MonoBehaviour
     public HealthComp health;
     public Death death;
     public Collider2D hitbox;
-    public BulletClass bullet;
+    public GameObject bulletType1;
     public GameObject spawnPoint;
+    public Controller bulletControlToConnect;
 
     //add a location for bullets to spawn and a speed.
     public float bulletSpeed;
@@ -39,7 +42,8 @@ public class Pawn : MonoBehaviour
         health = GetComponent<HealthComp>();
         death = GetComponent<Death>();
         hitbox = GetComponent<Collider2D>();
-        bullet = GetComponent<BulletClass>();
+      
+       
     }
 
 
@@ -73,7 +77,7 @@ public class Pawn : MonoBehaviour
 
     public void MoveTowards(Controller controllerToMoveTowards)
     {
-        MoveTowards(controllerToMoveTowards.pawn);
+        MoveTowards(controllerToMoveTowards.player);
     }
     public void MoveTowards(Pawn pawnToMoveTowards)
     {
@@ -165,10 +169,19 @@ public class Pawn : MonoBehaviour
         transform.position = transform.position + (transform.up * bulletSpeed) * Time.deltaTime;
     }
     //public void SpawnBullet(float bulletSpawn)
+    //public void FireBullet1()
     //{
-    //    transform.position = transform.postition + (transform.up + bulletSpawn) * Time.deltaTime;
     //    GameObject tempBull;
-    //    tempBull = Instantiate(bulletShot, bulletSpawn.transform.position, Quaternion.identity) as GameObject;
+    //    tempBull = Instantiate(bulletType1, transform.position, transform.rotation) as GameObject;
+    //    if (tempBull != null)
+    //    {
+    //        Pawn bullComponent = tempBull.GetComponent<Pawn>();
+    //        if (tempBull != null)
+    //        {
+    //            bulletControlToConnect.bull = bullComponent;
+    //        }
+
+    //    }
     //}
 
 

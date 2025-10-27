@@ -10,10 +10,19 @@ public class GameManager : MonoBehaviour
 
     public static GameManager core;
 
+    [Header("Scenes")]
+    public GameObject Gameplay;
+    public GameObject Title;
+
+    [Header("misc")]
     public List<DamageOnEnter> damageZones;
+
     [Header("Timer")]
     public float timeRemaining;
     public float maxTime;
+
+    [Header("Score")]
+    public int Score = 0;
     
 
     void Awake()
@@ -31,7 +40,9 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        StartTitle();
         timeRemaining = maxTime;
+        ResetScore();
     }
 
     // Update is called once per frame
@@ -50,6 +61,12 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
     }
+    public void StartGame()
+    {
+        StartGameplay();
+        timeRemaining = maxTime;
+        ResetScore();
+    }
     public void WinGame()
     {
         if (damageZones.Count <= 0)
@@ -64,9 +81,33 @@ public class GameManager : MonoBehaviour
         Debug.Log("Failure | How have I fallen?");
     }
     
+    public void ResetScore()
+    {
+        Score.ToString();
+    }
     public void ResetTimer()
     {
         timeRemaining = maxTime;
     }
     
+
+
+    //deactive scenes
+    private void DeactivateScenes()
+    {
+        Title.SetActive(false);
+        Gameplay.SetActive(false);
+    }
+
+    public void StartTitle()
+    {
+        DeactivateScenes();
+
+        Title.SetActive(true);
+    }
+    public void StartGameplay()
+    {
+        DeactivateScenes();
+        Gameplay.SetActive(true);
+    }
 }

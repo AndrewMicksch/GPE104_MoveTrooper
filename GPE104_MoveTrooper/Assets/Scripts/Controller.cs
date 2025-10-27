@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public Pawn pawn;
+    public Pawn player;
     public Pawn bull;
 
     [Header("spawner")]
@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
         //spawn the initial pawn
-        if (Input.GetKeyDown(KeyCode.M))
+        if (player == null)
         {
             GameObject tempPawn;
             tempPawn = Instantiate(prefabToCopy, Vector3.zero, Quaternion.identity) as GameObject;
@@ -34,11 +34,11 @@ public class Controller : MonoBehaviour
 
                 if (tempPawn != null)
                 {
-                    controllerToConnect.pawn = pawnComponent;
+                    controllerToConnect.player = pawnComponent;
                 }
             }
         }
-        if (pawn != null)
+        if (player != null)
         {
             MakeDecisions();
 
@@ -58,45 +58,45 @@ public class Controller : MonoBehaviour
                 //TODO Create the booster speed shifter
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
-             pawn.moveSpeed = pawn.moveSpeed * pawn.booster;
+             player.moveSpeed = player.moveSpeed * player.booster;
         }
 
 
         //TODO make a way to reset to default speed after having boosted
         else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
-            pawn.moveSpeed = pawn.baseSpeed;
+            player.moveSpeed = player.baseSpeed;
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
             //Set the locations it can teleport to
-            pawn.shipBlink();
+            player.shipBlink();
         }
 
         // Move the ship forward in local space
         if (Input.GetKey(KeyCode.W))
         {
             //TODO: Tell Pawn to Move Forward
-            pawn.MoveForward(pawn.moveSpeed);
+            player.MoveForward(player.moveSpeed);
         }
 
         // move ship left
         if (Input.GetKey(KeyCode.Q))
         {
-            pawn.MoveLeft(pawn.moveSpeed);
+            player.MoveLeft(player.moveSpeed);
         }
 
         //move ship right
         if (Input.GetKey(KeyCode.E))
         {
-            pawn.MoveRight(pawn.moveSpeed);
+            player.MoveRight(player.moveSpeed);
         }
 
         //move ship back
         if (Input.GetKey(KeyCode.S))
         {
-            pawn.MoveBackward(pawn.moveSpeed);
+            player.MoveBackward(player.moveSpeed);
         }
 
 
@@ -105,38 +105,38 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            pawn.HorizontalLeft(pawn.moveSpeed);
+            player.HorizontalLeft(player.moveSpeed);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            pawn.HorizontalRight(pawn.moveSpeed);
+            player.HorizontalRight(player.moveSpeed);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            pawn.VerticalUp(pawn.moveSpeed);
+            player.VerticalUp(player.moveSpeed);
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            pawn.VerticalDown(pawn.moveSpeed);
+            player.VerticalDown(player.moveSpeed);
         }
 
         //rotates the ship left and right
         if (Input.GetKey(KeyCode.D))
         {
-            pawn.RotateClockwise(pawn.turnSpeed);
+            player.RotateClockwise(player.turnSpeed);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            pawn.RotateCounterClockwise(pawn.turnSpeed);
+            player.RotateCounterClockwise(player.turnSpeed);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            pawn.ShieldMode(pawn.iFrameDuration);
+            player.ShieldMode(player.iFrameDuration);
             Debug.Log("Space is pressed");
         }
 
@@ -145,9 +145,10 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
+            //player.FireBullet1();
 
             GameObject tempBull;
-            tempBull = Instantiate(prefabBullet1, pawn.transform.up, pawn.transform.rotation) as GameObject;
+            tempBull = Instantiate(prefabBullet1, player.transform.up, player.transform.rotation) as GameObject;
             if (tempBull != null)
             {
                 Pawn bullComponent = tempBull.GetComponent<Pawn>();
@@ -163,7 +164,7 @@ public class Controller : MonoBehaviour
         {
 
             GameObject tempBull;
-            tempBull = Instantiate(prefabBullet2, pawn.transform.up, pawn.transform.rotation) as GameObject;
+            tempBull = Instantiate(prefabBullet2, player.transform.up, player.transform.rotation) as GameObject;
             if (tempBull != null)
             {
                 Pawn bullComponent = tempBull.GetComponent<Pawn>();
@@ -179,7 +180,7 @@ public class Controller : MonoBehaviour
         if (bull != null)
         {
 
-            bull.Shoot(bull.bulletSpeed + pawn.moveSpeed);
+            bull.Shoot(bull.bulletSpeed + player.moveSpeed);
         }
 
 
