@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 5293930291876233788}
   - component: {fileID: 8697315913506643167}
   - component: {fileID: 4928653877418759492}
+  - component: {fileID: -5517270607916665677}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -235,8 +236,9 @@ MonoBehaviour:
   health: {fileID: 5293930291876233788}
   death: {fileID: 8697315913506643167}
   hitbox: {fileID: 4928653877418759492}
-  bullet: {fileID: 0}
+  bulletType1: {fileID: 0}
   spawnPoint: {fileID: 1081407868426024942}
+  bulletControlToConnect: {fileID: 0}
   bulletSpeed: 0
 --- !u!114 &5293930291876233788
 MonoBehaviour:
@@ -265,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ce7cc0f9db69f419b7b2ae1d22cdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
-  player: 0
+  Point: 0
 --- !u!61 &4928653877418759492
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -312,6 +314,14 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.33867466, y: 0.75}
   m_EdgeRadius: 0
+--- !u!81 &-5517270607916665677
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2183228224955340841}
+  m_Enabled: 1
 --- !u!1 &5907897516628026328
 GameObject:
   m_ObjectHideFlags: 0

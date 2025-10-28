@@ -23,7 +23,15 @@ public class GameManager : MonoBehaviour
 
     [Header("Score")]
     public int Score = 0;
-    
+
+    [Header("Audio")]
+
+    public AudioClip shootSFX;
+    public AudioClip deathSFX;
+    public AudioClip explosionSFX;
+
+
+
 
     void Awake()
     {

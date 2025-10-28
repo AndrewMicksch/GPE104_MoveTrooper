@@ -513,7 +513,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1722,6 +1722,9 @@ MonoBehaviour:
   timeRemaining: 60
   maxTime: 180
   Score: 0
+  shootSFX: {fileID: 0}
+  deathSFX: {fileID: 0}
+  explosionSFX: {fileID: 0}
 --- !u!4 &1321948267
 Transform:
   m_ObjectHideFlags: 0
