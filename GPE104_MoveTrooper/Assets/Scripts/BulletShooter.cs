@@ -4,10 +4,12 @@ public class BulletShooter : BulletClass
 {
     public float damageDone;
     public bool destroyOnHit;
+    private AudioSource firingSFX;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        firingSFX = this.GetComponent<AudioSource>();
+        firingSFX.PlayOneShot(GameManager.core.shootSFX);
     }
 
     // Update is called once per frame

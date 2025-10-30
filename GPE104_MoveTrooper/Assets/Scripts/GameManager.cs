@@ -26,9 +26,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Audio")]
 
+    // Get sound from freesound.org Kenny.nl
     public AudioClip shootSFX;
+    public AudioClip collisionSFX;
+    public AudioClip passiveHum;
     public AudioClip deathSFX;
     public AudioClip explosionSFX;
+    public AudioClip BackgroundMusic;
+    public AudioClip TitleMusic;
 
 
 
