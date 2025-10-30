@@ -335,11 +335,109 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
   Point: 0
+  deathSFX: {fileID: 0}
 --- !u!4 &257880511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7369776845309868888, guid: 6f9eb68f1dcf8ff40b82ff2199ddbdda, type: 3}
   m_PrefabInstance: {fileID: 1151668211}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &257880518
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257880498}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 6b54416a156558842b30eb715c541cd7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 140
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &305196157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1603,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2154706190646204760, guid: 6f9eb68f1dcf8ff40b82ff2199ddbdda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 257880505}
+    - targetCorrespondingSourceObject: {fileID: 2154706190646204760, guid: 6f9eb68f1dcf8ff40b82ff2199ddbdda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 257880518}
   m_SourcePrefab: {fileID: 100100000, guid: 6f9eb68f1dcf8ff40b82ff2199ddbdda, type: 3}
 --- !u!1 &1208458727
 GameObject:
@@ -1697,6 +1798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1321948267}
   - component: {fileID: 1321948266}
+  - component: {fileID: 1321948268}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -1722,9 +1824,13 @@ MonoBehaviour:
   timeRemaining: 60
   maxTime: 180
   Score: 0
-  shootSFX: {fileID: 0}
-  deathSFX: {fileID: 0}
-  explosionSFX: {fileID: 0}
+  shootSFX: {fileID: 8300000, guid: c8fa55c90eaf0eb429966ed5b4daa5ac, type: 3}
+  collisionSFX: {fileID: 8300000, guid: 6b54416a156558842b30eb715c541cd7, type: 3}
+  passiveHum: {fileID: 0}
+  deathSFX: {fileID: 8300000, guid: d7e27a6602bc6074e9cbe69cbef8a0b6, type: 3}
+  explosionSFX: {fileID: 8300000, guid: d7e27a6602bc6074e9cbe69cbef8a0b6, type: 3}
+  BackgroundMusic: {fileID: 0}
+  TitleMusic: {fileID: 0}
 --- !u!4 &1321948267
 Transform:
   m_ObjectHideFlags: 0
@@ -1740,6 +1846,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1321948268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c023952f0d61666499c70c67ed6200c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioTest
+  collideSFX: {fileID: 0}
+  collideClip: {fileID: 0}
 --- !u!4 &1398487628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8287635485102038948, guid: 0f583cef256580148a3556cc9877c7e9, type: 3}
