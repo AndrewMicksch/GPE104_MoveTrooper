@@ -6,6 +6,7 @@ public class Controller : MonoBehaviour
 {
     public Pawn player;
     public Pawn bull;
+    public Pawn secret;
 
     [Header("spawner")]
     public GameObject Gameplay;

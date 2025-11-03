@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     public GameObject Gameplay;
     public GameObject Title;
     public GameObject Victory;
+    public Controller enemyController;
+
+    [Header("Secret")]
+    public GameObject secretHim;
+    public List<SecretCounter> secret;
+
 
     [Header("misc")]
     public List<DamageOnEnter> damageZones;
@@ -51,6 +57,7 @@ public class GameManager : MonoBehaviour
         }
 
         damageZones = new List<DamageOnEnter>();
+        secret = new List<SecretCounter>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,6 +74,10 @@ public class GameManager : MonoBehaviour
         {
             WinGame();
         }
+      //if (secret != null)
+      //  {
+      //      SecretSpawn();
+      //  }
     }
 
     public void GameQuit()
@@ -92,7 +103,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void SecretSpawn()
+    {
+
+        if (enemyController.secret == null)
+        {
+            GameObject secretTemp;
+            secretTemp = Instantiate(secretHim, Vector3.zero, Quaternion.identity) as GameObject;
+
+            if (enemyController.secret != null)
+            {
+                Pawn pawnComponent = secretTemp.GetComponent<Pawn>();
+
+                if (secretTemp != null)
+                {
+                    enemyController.secret = pawnComponent;
+                }
+            }
+        }
+    }
     public void LoseGame()
     {
         Debug.Log("Failure | How have I fallen?");
