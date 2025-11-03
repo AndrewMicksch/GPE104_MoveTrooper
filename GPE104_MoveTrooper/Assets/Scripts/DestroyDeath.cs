@@ -5,10 +5,15 @@ public class DestroyDeath : Death
 {
 
     public bool Point;
-    public AudioClip deathSFX;
+    private AudioClip deathSFX;
+
+    void Start()
+    {
+        deathSFX = GameManager.core.deathSFX;
+    }
     public override void Die()
     {
-        AudioSource.PlayClipAtPoint(GameManager.core.deathSFX, transform.position, 1.0f);
+        AudioSource.PlayClipAtPoint(deathSFX, transform.position, 1.0f);
         Destroy(gameObject);
         if (Point == true)
         {

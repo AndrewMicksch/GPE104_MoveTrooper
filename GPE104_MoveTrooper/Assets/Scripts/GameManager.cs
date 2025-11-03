@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("Scenes")]
     public GameObject Gameplay;
     public GameObject Title;
+    public GameObject Victory;
 
     [Header("misc")]
     public List<DamageOnEnter> damageZones;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Score")]
     public int Score = 0;
+    public bool winCondition;
 
     [Header("Audio")]
 
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (damageZones != null)
+      if (damageZones != null && winCondition == false)
         {
             WinGame();
         }
@@ -82,9 +84,11 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
-        if (damageZones.Count <= 0)
+        if ((damageZones.Count <= 0) && (Title.activeSelf != true))
         {
             Debug.Log("Victory | I soar above all.");
+            StartVictory();
+            winCondition = true;
         }
     }
 
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
     {
         Title.SetActive(false);
         Gameplay.SetActive(false);
+        Victory.SetActive(false);
     }
 
     public void StartTitle()
@@ -122,5 +127,10 @@ public class GameManager : MonoBehaviour
     {
         DeactivateScenes();
         Gameplay.SetActive(true);
+    }
+    public void StartVictory()
+    {
+        DeactivateScenes();
+        Victory.SetActive(true);
     }
 }

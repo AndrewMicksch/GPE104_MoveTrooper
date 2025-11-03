@@ -24,8 +24,13 @@ public class Pawn : MonoBehaviour
     public Death death;
     public Collider2D hitbox;
     public GameObject bulletType1;
+    public GameObject bulletType2;
     public GameObject spawnPoint;
     public Controller bulletControlToConnect;
+
+    [Header("Audio")]
+    private AudioSource hum;
+    private AudioClip passiveHum;
 
     //add a location for bullets to spawn and a speed.
     public float bulletSpeed;
@@ -42,6 +47,11 @@ public class Pawn : MonoBehaviour
         health = GetComponent<HealthComp>();
         death = GetComponent<Death>();
         hitbox = GetComponent<Collider2D>();
+        hum = this.GetComponent<AudioSource>();
+        passiveHum = GameManager.core.passiveHum;
+        hum.clip = passiveHum;
+        hum.loop = true;
+        hum.Play();
       
        
     }
@@ -55,6 +65,8 @@ public class Pawn : MonoBehaviour
     }
 
     // TODO use these for future pawns.
+
+   
     public void MoveTowards(Vector3 pointToMoveTowards)
     {
         //find vecotor towards that point
@@ -168,21 +180,37 @@ public class Pawn : MonoBehaviour
     {
         transform.position = transform.position + (transform.up * bulletSpeed) * Time.deltaTime;
     }
-    //public void SpawnBullet(float bulletSpawn)
-    //public void FireBullet1()
-    //{
-    //    GameObject tempBull;
-    //    tempBull = Instantiate(bulletType1, transform.position, transform.rotation) as GameObject;
-    //    if (tempBull != null)
-    //    {
-    //        Pawn bullComponent = tempBull.GetComponent<Pawn>();
-    //        if (tempBull != null)
-    //        {
-    //            bulletControlToConnect.bull = bullComponent;
-    //        }
+    
+    public void FireBullet1()
+    {
+        spawnPosition = spawnPoint.GetComponent<Transform>();
+        GameObject tempBull;
+        tempBull = Instantiate(bulletType1, spawnPosition.position, transform.rotation) as GameObject;
+        if (tempBull != null)
+        {
+            Pawn bullComponent = tempBull.GetComponent<Pawn>();
+            if (tempBull != null)
+            {
+                bulletControlToConnect.bull = bullComponent;
+            }
 
-    //    }
-    //}
+        }
+    }
+    public void FireBullet2()
+    {
+        spawnPosition = spawnPoint.GetComponent<Transform>();
+        GameObject tempBull;
+        tempBull = Instantiate(bulletType2, spawnPosition.position, transform.rotation) as GameObject;
+        if (tempBull != null)
+        {
+            Pawn bullComponent = tempBull.GetComponent<Pawn>();
+            if (tempBull != null)
+            {
+                bulletControlToConnect.bull = bullComponent;
+            }
+
+        }
+    }
 
 
 }

@@ -9,6 +9,7 @@ public class MissleShooter : BulletClass
     public float explosionLength;
     public bool destroyOnHit;
     public Collider2D hitbox;
+    private AudioSource explodeSFX;
 
 
 
@@ -16,6 +17,8 @@ public class MissleShooter : BulletClass
     void Start()
     {
         hitbox = GetComponent<Collider2D>();
+        explodeSFX = this.GetComponent<AudioSource>();
+        explodeSFX.PlayOneShot(GameManager.core.explosionSFX);
 
     }
 

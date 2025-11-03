@@ -44,6 +44,7 @@ public class HealthComp : MonoBehaviour
         Death death = GetComponent<Death>();
         if (death != null)
         {
+            AudioSource.PlayClipAtPoint(GameManager.core.deathSFX, transform.position, 1.0f);
             if (player != false)
             {
                 GameManager.core.LoseGame();

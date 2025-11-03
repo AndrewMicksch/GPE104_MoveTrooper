@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
     public Pawn bull;
 
     [Header("spawner")]
+    public GameObject Gameplay;
     public GameObject prefabToCopy;
     public Controller controllerToConnect;
     public GameObject prefabBullet1;
@@ -35,6 +36,7 @@ public class Controller : MonoBehaviour
                 if (tempPawn != null)
                 {
                     controllerToConnect.player = pawnComponent;
+                    player.bulletControlToConnect = bulletControlToConnect;
                 }
             }
         }
@@ -140,40 +142,56 @@ public class Controller : MonoBehaviour
             Debug.Log("Space is pressed");
         }
 
+        //Healing and Death
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            player.death.Die();
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            player.health.TakeDamage(1);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            player.health.Heal(1);
+        }
+
         //Bullet instructions
 
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            //player.FireBullet1();
+            player.FireBullet1();
+            
 
-            GameObject tempBull;
-            tempBull = Instantiate(prefabBullet1, player.transform.up, player.transform.rotation) as GameObject;
-            if (tempBull != null)
-            {
-                Pawn bullComponent = tempBull.GetComponent<Pawn>();
-                if (tempBull != null)
-                {
-                    bulletControlToConnect.bull = bullComponent;
-                }
+            //GameObject tempBull;
+            //tempBull = Instantiate(prefabBullet1, player.transform.up, player.transform.rotation) as GameObject;
+            //if (tempBull != null)
+            //{
+            //    Pawn bullComponent = tempBull.GetComponent<Pawn>();
+            //    if (tempBull != null)
+            //    {
+            //        bulletControlToConnect.bull = bullComponent;
+            //    }
 
-            }
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
+            player.FireBullet2();
 
-            GameObject tempBull;
-            tempBull = Instantiate(prefabBullet2, player.transform.up, player.transform.rotation) as GameObject;
-            if (tempBull != null)
-            {
-                Pawn bullComponent = tempBull.GetComponent<Pawn>();
-                if (tempBull != null)
-                {
-                    bulletControlToConnect.bull = bullComponent;
-                }
+            //GameObject tempBull;
+            //tempBull = Instantiate(prefabBullet2, player.transform.up, player.transform.rotation) as GameObject;
+            //if (tempBull != null)
+            //{
+            //    Pawn bullComponent = tempBull.GetComponent<Pawn>();
+            //    if (tempBull != null)
+            //    {
+            //        bulletControlToConnect.bull = bullComponent;
+            //    }
 
-            }
+            //}
         }
 
 

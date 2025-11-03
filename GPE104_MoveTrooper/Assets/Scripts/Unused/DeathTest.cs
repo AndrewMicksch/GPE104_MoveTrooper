@@ -21,13 +21,12 @@ public class DeathTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("that sucked");
             testingPawn.health.TakeDamage(1);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            Debug.Log("That feels better");
             testingPawn.health.Heal(1);
         }
     }
 }
+
