@@ -117,6 +117,7 @@ MonoBehaviour:
   death: {fileID: 5569240014495013631}
   hitbox: {fileID: 896575089435428989}
   bulletType1: {fileID: 0}
+  bulletType2: {fileID: 0}
   spawnPoint: {fileID: 0}
   bulletControlToConnect: {fileID: 0}
   bulletSpeed: 3
@@ -277,7 +278,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
