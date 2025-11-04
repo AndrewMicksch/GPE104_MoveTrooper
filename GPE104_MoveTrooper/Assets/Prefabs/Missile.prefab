@@ -121,9 +121,10 @@ MonoBehaviour:
   death: {fileID: 504983866728422793}
   hitbox: {fileID: 2853846030692243664}
   bulletType1: {fileID: 0}
+  bulletType2: {fileID: 0}
   spawnPoint: {fileID: 0}
   bulletControlToConnect: {fileID: 0}
-  bulletSpeed: 3
+  bulletSpeed: 4
 --- !u!114 &504983866728422793
 MonoBehaviour:
   m_ObjectHideFlags: 0

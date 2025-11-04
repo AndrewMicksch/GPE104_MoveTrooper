@@ -3133,8 +3133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d330db12f4580418f7f42a0211306d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnHazards
-  hazardToSpawn: {fileID: 0}
-  hazardToSpawnKill: {fileID: 0}
+  AsteroidToSpawn: {fileID: 5051152856386382470, guid: 0f583cef256580148a3556cc9877c7e9, type: 3}
+  UFOToSpawn: {fileID: 2154706190646204760, guid: 6f9eb68f1dcf8ff40b82ff2199ddbdda, type: 3}
   ControllerToGrab: {fileID: 0}
   spawnTime: 0
   spawnArea: 0

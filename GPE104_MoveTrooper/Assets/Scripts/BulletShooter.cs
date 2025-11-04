@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletShooter : BulletClass
 {
     public float damageDone;
     public bool destroyOnHit;
     private AudioSource firingSFX;
+    float minX = -10f;
+    float maxX = 10f;
+    float minY = -5f;
+    float maxY = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,7 +20,7 @@ public class BulletShooter : BulletClass
     // Update is called once per frame
     void Update()
     {
-
+        
     }
     public override void Bullet()
     {
