@@ -20,13 +20,19 @@ public class BulletShooter : BulletClass
     // Update is called once per frame
     void Update()
     {
-        
+        OutofBounds();
     }
     public override void Bullet()
     {
        
     }
-
+    private OutofBounds(Transform.position)
+    {
+        if ((transform.position >= maxX) || (transform.position >= maxY) || (transform.posiiton <= minX) || (transform.position <= minY))
+        {
+            Destroy(gameObject);
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("bump");

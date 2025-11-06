@@ -44,10 +44,6 @@ public class Controller : MonoBehaviour
         if (player != null)
         {
             MakeDecisions();
-
-
-
-
         }
     }
     private void MakeDecisions()

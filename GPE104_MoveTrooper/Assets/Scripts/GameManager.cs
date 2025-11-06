@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     public List<SecretCounter> secret;
 
 
-    [Header("misc")]
+    [Header("Hazards")]
     public List<DamageOnEnter> damageZones;
+    public List<DamageOnEnter> uFOsInPlay;
+    public List<DamageOnEnter> asteroidsInPlay;
 
     [Header("Timer")]
     public float timeRemaining;
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour
         }
 
         damageZones = new List<DamageOnEnter>();
+        uFOsInPlay = new List<DamageOnEnter>();
+        asteroidsInPlay = new List<DamageOnEnter>();
         secret = new List<SecretCounter>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -70,7 +74,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (damageZones != null && winCondition == false)
+      if (Score >= 100 && winCondition == true)
         {
             WinGame();
         }
@@ -99,10 +103,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Victory | I soar above all.");
             StartVictory();
-            winCondition = true;
         }
     }
 
+    
     public void SecretSpawn()
     {
 

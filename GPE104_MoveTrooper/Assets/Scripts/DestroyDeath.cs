@@ -4,7 +4,8 @@ using UnityEngine;
 public class DestroyDeath : Death
 {
 
-    public bool Point;
+    public bool point;
+    public float pointAmount;
     private AudioClip deathSFX;
 
     void Start()
@@ -15,11 +16,9 @@ public class DestroyDeath : Death
     {
         AudioSource.PlayClipAtPoint(deathSFX, transform.position, 1.0f);
         Destroy(gameObject);
-        if (Point == true)
+        if (point == true)
         {
-            GameManager.core.Score += 1;
+            GameManager.core.Score += (int)(1 * pointAmount);
         }
-        
-
     }
 }
