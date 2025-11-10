@@ -5,6 +5,7 @@ public class DestroyDeath : Death
 {
 
     public bool point;
+    public bool isHIM;
     public float pointAmount;
     private AudioClip deathSFX;
 
@@ -19,6 +20,10 @@ public class DestroyDeath : Death
         if (point == true)
         {
             GameManager.core.Score += (int)(1 * pointAmount);
+        }
+        if (isHIM == true)
+        {
+            GameManager.core.winCondition = true;
         }
     }
 }
