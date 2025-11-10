@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public List<DamageOnEnter> damageZones;
     public List<DamageOnEnter> uFOsInPlay;
     public List<DamageOnEnter> asteroidsInPlay;
+    public int minSpawn;
+    public int maxSpawns;
 
     [Header("Timer")]
     public float timeRemaining;
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
     [Header("Score")]
     public int Score = 0;
     public bool winCondition;
-    public int Lives = 0;
+    public int Lives;
 
     [Header("Audio")]
 
@@ -59,7 +61,8 @@ public class GameManager : MonoBehaviour
         if (core == null)
         {
             core = this;
-        } else
+        } 
+        else
         {
             Destroy(gameObject);
         }
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour
         if (enemyController.secret == null)
         {
             GameObject secretTemp;
+
             secretTemp = Instantiate(secretHim, Vector3.zero, Quaternion.identity) as GameObject;
 
             if (enemyController.secret != null)
@@ -128,6 +132,7 @@ public class GameManager : MonoBehaviour
                 if (secretTemp != null)
                 {
                     enemyController.secret = pawnComponent;
+                    secretTemp.transform.parent = Gameplay.transform;
                 }
             }
         }

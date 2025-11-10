@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 
 public class SpawnHazards : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SpawnHazards : MonoBehaviour
     public EnemyController controllerToGrab;
     public GameObject gameplay;
     int randomCount;
+    public float randomChance;
 
     [Header("Location")]
     public float spawnTime;
@@ -22,47 +24,35 @@ public class SpawnHazards : MonoBehaviour
     void Start()
     {
         Spawn(spawnTime);
-        randomCount = Random.Range(3, 10);
-        for (int i = 0; i < randomCount; ++i)
-        {
-
-            GameObject tempUFO;
-            tempUFO = Instantiate(uFOToSpawn, spawnPosition, Quaternion.identity) as GameObject;
-            Pawn pawnComponent = tempUFO.GetComponent<Pawn>();
-            if (tempUFO != null)
-            {
-                controllerToGrab.uFO = pawnComponent;
-                tempUFO.transform.parent = gameplay.transform;
-            }
-        }
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+    
     void Spawn(float spawnTime)
     {
-        StartCoroutine(SpawnUFO());
+        StartCoroutine(SpawnHazard());
     }
-    public IEnumerator SpawnUFO()
+    public IEnumerator SpawnHazard()
     {
         while (true)
         {
-            float randomX = Random.Range(minX, maxX);
-            float randomY = Random.Range(minY, maxY);
-            spawnPosition = new Vector3(randomX, randomY, 0);
-            randomCount = Random.Range(1, 3);
-
-            if (GameManager.core.uFOsInPlay.Count <= 1)
+            yield return new WaitForSeconds(spawnTime);
+            randomChance = Random.Range(1, 5);
+            if (randomChance > 3)
             {
-                yield return new WaitForSeconds(spawnTime);
-                if (GameManager.core.secret.Count == 0)
+                if (GameManager.core.uFOsInPlay.Count <= 1)
                 {
-                    for (int i = 0; i < 2; ++i)
+
+                    randomCount = Random.Range(GameManager.core.minSpawn, GameManager.core.maxSpawns + 1);
+                    if (GameManager.core.secret.Count == 0)
                     {
+                        float randomX = Random.Range(minX, maxX);
+                        float randomY = Random.Range(minY, maxY);
+                        spawnPosition = new Vector3(randomX, randomY, 0);
 
                         GameObject tempUFO;
                         tempUFO = Instantiate(uFOToSpawn, spawnPosition, Quaternion.identity) as GameObject;
@@ -73,31 +63,71 @@ public class SpawnHazards : MonoBehaviour
                             tempUFO.transform.parent = gameplay.transform;
 
                         }
-
                     }
-                }
-                else
-                {
-                    for (int i = 0; i < randomCount; ++i)
+                    else
                     {
-
-                        GameObject tempUFO;
-                        tempUFO = Instantiate(uFOToSpawn, spawnPosition, Quaternion.identity) as GameObject;
-                        Pawn pawnComponent = tempUFO.GetComponent<Pawn>();
-                        if (tempUFO != null)
+                        for (int i = 0; i < randomCount; ++i)
                         {
-                            controllerToGrab.uFO = pawnComponent;
-                            tempUFO.transform.parent = gameplay.transform;
+                            float randomX = Random.Range(minX, maxX);
+                            float randomY = Random.Range(minY, maxY);
+                            spawnPosition = new Vector3(randomX, randomY, 0);
+                            GameObject tempUFO;
+                            tempUFO = Instantiate(uFOToSpawn, spawnPosition, Quaternion.identity) as GameObject;
+                            Pawn pawnComponent = tempUFO.GetComponent<Pawn>();
+                            if (tempUFO != null)
+                            {
+                                controllerToGrab.uFO = pawnComponent;
+                                tempUFO.transform.parent = gameplay.transform;
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                if (GameManager.core.asteroidsInPlay.Count <= 1)
+                {
+
+                    randomCount = Random.Range(GameManager.core.minSpawn, GameManager.core.maxSpawns + 1);
+                    if (GameManager.core.secret.Count == 0)
+                    {
+                        float randomX = Random.Range(minX, maxX);
+                        float randomY = Random.Range(minY, maxY);
+                        spawnPosition = new Vector3(randomX, randomY, 0);
+
+                        GameObject tempAsteroid;
+                        tempAsteroid = Instantiate(asteroidToSpawn, spawnPosition, Quaternion.identity) as GameObject;
+                        Pawn pawnComponent = tempAsteroid.GetComponent<Pawn>();
+                        if (tempAsteroid != null)
+                        {
+                            controllerToGrab.asteroid = pawnComponent;
+                            tempAsteroid.transform.parent = gameplay.transform;
+
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < randomCount; ++i)
+                        {
+                            float randomX = Random.Range(minX, maxX);
+                            float randomY = Random.Range(minY, maxY);
+                            spawnPosition = new Vector3(randomX, randomY, 0);
+                            GameObject tempAsteroid;
+                            tempAsteroid = Instantiate(asteroidToSpawn, spawnPosition, Quaternion.identity) as GameObject;
+                            Pawn pawnComponent = tempAsteroid.GetComponent<Pawn>();
+                            if (tempAsteroid != null)
+                            {
+                                controllerToGrab.asteroid = pawnComponent;
+                                tempAsteroid.transform.parent = gameplay.transform;
+                            }
+                        }
+                    }
+                }
+            
+            }
         }
         
     }
-   
-    public void SpawnAsteroid()
-    {
 
-    }
 }
+
