@@ -6,10 +6,13 @@ public class MissleShooter : BulletClass
 {
     public float damageDone;
     public float effectArea;
+    public float shootSpeed;
     public float explosionLength;
     public bool destroyOnHit;
     public Collider2D hitbox;
     private AudioSource explodeSFX;
+
+   
 
 
 
@@ -25,12 +28,24 @@ public class MissleShooter : BulletClass
     // Update is called once per frame
     void Update()
     {
-        
+        Shoot(shootSpeed);
+        OutofBounds();
     }
 
     public override void Bullet()
     {
         
+    }
+    void OutofBounds()
+    {
+        if ((transform.position.x >= GameManager.core.maxX) || (transform.position.y >= GameManager.core.maxY) || (transform.position.x <= GameManager.core.minX) || (transform.position.y <= GameManager.core.minY))
+        {
+            Destroy(gameObject);
+        }
+    }
+    void Shoot(float shootSpeed)
+    {
+        transform.position = transform.position + (transform.up * shootSpeed) * Time.deltaTime;
     }
     public void Explode(float explosionLength)
     {
@@ -64,6 +79,7 @@ public class MissleShooter : BulletClass
             if (otherDeath != null)
             {
                 Explode(explosionLength);
+                shootSpeed *= 0;
             }
 
         }

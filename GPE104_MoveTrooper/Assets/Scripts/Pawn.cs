@@ -5,10 +5,7 @@ using UnityEngine.UIElements;
 
 public class Pawn : MonoBehaviour
 {
-    float minX = -10f;
-    float maxX = 10f;
-    float minY = -5f;
-    float maxY = 5f;
+
     private Transform spawnPosition;
 
     [Header("Movement")]
@@ -61,12 +58,34 @@ public class Pawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        WrapX();
+        WrapY();
     }
 
     // TODO use these for future pawns.
 
-   
+    public void WrapX()
+    {
+        if (transform.position.x > GameManager.core.maxX && transform.position.x != GameManager.core.minX)
+        {
+            transform.position = new Vector3(GameManager.core.minX, transform.position.y);
+        }
+        if (transform.position.x < GameManager.core.minX && transform.position.x != GameManager.core.maxX)
+        {
+            transform.position = new Vector3(GameManager.core.maxX, transform.position.y);
+        }
+    }
+    public void WrapY()
+    {
+        if (transform.position.y > GameManager.core.maxY && transform.position.y != GameManager.core.minY)
+        {
+            transform.position = new Vector3(transform.position.x, GameManager.core.minY);
+        }
+        if (transform.position.y < GameManager.core.minY && transform.position.y != GameManager.core.maxY)
+        {
+            transform.position = new Vector3(transform.position.x, GameManager.core.maxY);
+        }
+    }
     public void MoveTowards(Vector3 pointToMoveTowards)
     {
         //find vecotor towards that point
@@ -170,15 +189,15 @@ public class Pawn : MonoBehaviour
     public void shipBlink()
     {
         //Set the locations it can teleport to
-        float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
+        float randomX = Random.Range(GameManager.core.minX, GameManager.core.maxX);
+        float randomY = Random.Range(GameManager.core.minY, GameManager.core.maxY);
         transform.position = new Vector2(randomX, randomY);
     }
 
     //introduce a bullet movement
     public void Shoot(float bulletSpeed)
     {
-        transform.position = transform.position + (transform.up * bulletSpeed) * Time.deltaTime;
+        //transform.position = transform.position + (transform.up * bulletSpeed) * Time.deltaTime;
     }
     
     public void FireBullet1()

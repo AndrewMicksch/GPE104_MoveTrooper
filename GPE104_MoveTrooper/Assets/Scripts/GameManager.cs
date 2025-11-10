@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public GameObject Title;
     public GameObject Victory;
     public Controller enemyController;
+    public float minX = -10f;
+    public float maxX = 10f;
+    public float minY = -5f;
+    public float maxY = 5f;
 
     [Header("Secret")]
     public GameObject secretHim;

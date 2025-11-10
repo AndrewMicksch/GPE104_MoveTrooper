@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MissleShooter
   damageDone: 3
   effectArea: 2
+  shootSpeed: 4
   explosionLength: 2
   destroyOnHit: 1
   hitbox: {fileID: 0}
@@ -137,7 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ce7cc0f9db69f419b7b2ae1d22cdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
-  Point: 0
+  point: 0
+  pointAmount: 0
 --- !u!212 &6017119514294340731
 SpriteRenderer:
   m_ObjectHideFlags: 0

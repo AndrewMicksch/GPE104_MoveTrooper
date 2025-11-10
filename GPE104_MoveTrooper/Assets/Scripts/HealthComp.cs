@@ -4,6 +4,7 @@ public class HealthComp : MonoBehaviour
 {
     public float currentHP;
     public float maxHP;
+    public float lives;
     public bool player;
     
 

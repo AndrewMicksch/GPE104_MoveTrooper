@@ -6,10 +6,7 @@ public class BulletShooter : BulletClass
     public float damageDone;
     public bool destroyOnHit;
     private AudioSource firingSFX;
-    float minX = -10f;
-    float maxX = 10f;
-    float minY = -5f;
-    float maxY = 5f;
+    public float shootSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,18 +17,23 @@ public class BulletShooter : BulletClass
     // Update is called once per frame
     void Update()
     {
+        Shoot(shootSpeed);
         OutofBounds();
     }
     public override void Bullet()
     {
        
     }
-    private OutofBounds(Transform.position)
+    void OutofBounds()
     {
-        if ((transform.position >= maxX) || (transform.position >= maxY) || (transform.posiiton <= minX) || (transform.position <= minY))
+        if ((transform.position.x >= GameManager.core.maxX) || (transform.position.y >= GameManager.core.maxY) || (transform.position.x <= GameManager.core.minX) || (transform.position.y <= GameManager.core.minY))
         {
             Destroy(gameObject);
         }
+    }
+    void Shoot(float shootSpeed)
+    {
+        transform.position = transform.position + (transform.up * shootSpeed) * Time.deltaTime;
     }
     void OnTriggerEnter2D(Collider2D other)
     {
