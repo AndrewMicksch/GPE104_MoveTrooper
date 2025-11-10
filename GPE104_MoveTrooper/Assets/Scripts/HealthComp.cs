@@ -46,12 +46,21 @@ public class HealthComp : MonoBehaviour
         if (death != null)
         {
             AudioSource.PlayClipAtPoint(GameManager.core.deathSFX, transform.position, 1.0f);
-            if (player != false)
+            if (player != false) 
             {
-                GameManager.core.LoseGame();
+                if (GameManager.core.Lives == 0)
+                {
+                    GameManager.core.LoseGame();
+                    death.Die();
+                }
+                else
+                {
+                    GameManager.core.Lives -= 1;
+                    death.Die();
+                }
+             }
+            
                 death.Die();
-            }
-            death.Die();
         }
         
     }

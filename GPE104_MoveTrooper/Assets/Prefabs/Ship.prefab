@@ -257,6 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComp
   currentHP: 10
   maxHP: 10
+  lives: 3
   player: 1
 --- !u!114 &8697315913506643167
 MonoBehaviour:
@@ -270,7 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ce7cc0f9db69f419b7b2ae1d22cdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
-  Point: 0
+  point: 0
+  pointAmount: 0
 --- !u!61 &4928653877418759492
 BoxCollider2D:
   m_ObjectHideFlags: 0

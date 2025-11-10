@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject Gameplay;
     public GameObject Title;
     public GameObject Victory;
+    public GameObject Lose;
     public Controller enemyController;
     public float minX = -10f;
     public float maxX = 10f;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     [Header("Score")]
     public int Score = 0;
     public bool winCondition;
+    public int Lives = 0;
 
     [Header("Audio")]
 
@@ -103,7 +105,7 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
-        if ((damageZones.Count <= 0) && (Title.activeSelf != true))
+        if (Title.activeSelf != true)
         {
             Debug.Log("Victory | I soar above all.");
             StartVictory();
@@ -132,6 +134,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoseGame()
     {
+        StartLose();
         Debug.Log("Failure | How have I fallen?");
     }
     
@@ -152,8 +155,13 @@ public class GameManager : MonoBehaviour
         Title.SetActive(false);
         Gameplay.SetActive(false);
         Victory.SetActive(false);
+        Lose.SetActive(false);
     }
-
+    public void StartLose()
+    {
+        DeactivateScenes();
+        Lose.SetActive(true);
+    }
     public void StartTitle()
     {
         DeactivateScenes();

@@ -9,7 +9,7 @@ public class Controller : MonoBehaviour
     public Pawn secret;
 
     [Header("spawner")]
-    public GameObject Gameplay;
+    public GameObject gameplay;
     public GameObject prefabToCopy;
     public Controller controllerToConnect;
     public GameObject prefabBullet1;
@@ -25,7 +25,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
         //spawn the initial pawn
-        if (player == null)
+        if (player == null && gameplay.activeSelf == true)
         {
             GameObject tempPawn;
             tempPawn = Instantiate(prefabToCopy, Vector3.zero, Quaternion.identity) as GameObject;
@@ -38,6 +38,7 @@ public class Controller : MonoBehaviour
                 {
                     controllerToConnect.player = pawnComponent;
                     player.bulletControlToConnect = bulletControlToConnect;
+                    tempPawn.transform.parent = gameplay.transform;
                 }
             }
         }

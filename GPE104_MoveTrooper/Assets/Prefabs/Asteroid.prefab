@@ -376,6 +376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageOnEnter
   isInstantKill: 0
   destroyMutual: 0
+  isUFO: 0
+  isAsteroid: 1
   damageDone: 2
 --- !u!114 &7510715970747035676
 MonoBehaviour:
@@ -391,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComp
   currentHP: 6
   maxHP: 6
+  lives: 0
   player: 0
 --- !u!114 &4652720140059180844
 MonoBehaviour:

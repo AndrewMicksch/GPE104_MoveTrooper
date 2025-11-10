@@ -8,8 +8,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text bottomText;
     public Image healthBar;
     public Image enemyHealthBar;
-    public GameObject player;
+    public HealthComp player;
     public TMP_Text Score;
+    public TMP_Text Lives;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,8 +24,8 @@ public class UIManager : MonoBehaviour
     {
         UpdateTimer();
         UpdateScore();
-
-}
+        UpdateLives();
+    }
 
     void UpdateTimer()
     {
@@ -32,6 +33,11 @@ public class UIManager : MonoBehaviour
         timeImage.fillAmount = GameManager.core.timeRemaining / GameManager.core.maxTime;
         float displayTimeRemaining = (Mathf.Round(GameManager.core.timeRemaining * 100)) /100;
         bottomText.text = "Time Remaining:" + displayTimeRemaining;
+    }
+    void UpdateLives()
+    {
+        float displayLives = (Mathf.Round(GameManager.core.Lives));
+        Lives.text = "lives:" + displayLives;
     }
     void UpdateScore()
     { 
