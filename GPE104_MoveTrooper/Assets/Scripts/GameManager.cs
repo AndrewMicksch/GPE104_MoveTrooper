@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
         {
             WinGame();
         }
+        GameQuit();
       //if (secret != null)
       //  {
       //      SecretSpawn();
