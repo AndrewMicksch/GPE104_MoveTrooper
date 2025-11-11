@@ -11,11 +11,11 @@ public class DestroyDeath : Death
 
     void Start()
     {
-        deathSFX = GameManager.core.deathSFX;
+
     }
     public override void Die()
     {
-        AudioSource.PlayClipAtPoint(deathSFX, transform.position, 1.0f);
+
         Destroy(gameObject);
         if (point == true)
         {

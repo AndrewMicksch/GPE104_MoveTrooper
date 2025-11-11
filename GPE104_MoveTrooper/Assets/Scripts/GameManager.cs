@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject Victory;
     public GameObject Lose;
     public Controller enemyController;
+    public GameObject hazardSpawn;
     public float minX = -10f;
     public float maxX = 10f;
     public float minY = -5f;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Score")]
     public int Score = 0;
+    public int vicScore;
     public bool winCondition;
     public int Lives;
 
@@ -83,7 +85,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (Score >= 100 && winCondition == true)
+      if (Score >= vicScore && winCondition == true)
         {
             WinGame();
         }
@@ -119,23 +121,23 @@ public class GameManager : MonoBehaviour
     public void SecretSpawn()
     {
 
-        if (enemyController.secret == null)
-        {
-            GameObject secretTemp;
+        //if (enemyController.secret == null)
+        //{
+        //    GameObject secretTemp;
 
-            secretTemp = Instantiate(secretHim, Vector3.zero, Quaternion.identity) as GameObject;
+        //    secretTemp = Instantiate(secretHim, Vector3.zero, Quaternion.identity) as GameObject;
 
-            if (enemyController.secret != null)
-            {
-                Pawn pawnComponent = secretTemp.GetComponent<Pawn>();
+        //    if (enemyController.secret != null)
+        //    {
+        //        Pawn pawnComponent = secretTemp.GetComponent<Pawn>();
 
-                if (secretTemp != null)
-                {
-                    enemyController.secret = pawnComponent;
-                    secretTemp.transform.parent = Gameplay.transform;
-                }
-            }
-        }
+        //        if (secretTemp != null)
+        //        {
+        //            enemyController.secret = pawnComponent;
+        //            secretTemp.transform.parent = Gameplay.transform;
+        //        }
+        //    }
+        //}
     }
     public void LoseGame()
     {

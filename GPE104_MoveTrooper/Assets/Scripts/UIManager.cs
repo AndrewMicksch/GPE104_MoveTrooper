@@ -29,20 +29,29 @@ public class UIManager : MonoBehaviour
 
     void UpdateTimer()
     {
-        GameManager.core.timeRemaining -= Time.deltaTime;
-        timeImage.fillAmount = GameManager.core.timeRemaining / GameManager.core.maxTime;
-        float displayTimeRemaining = (Mathf.Round(GameManager.core.timeRemaining * 100)) /100;
-        bottomText.text = "Time Remaining:" + displayTimeRemaining;
+        if (bottomText != null)
+        {
+            GameManager.core.timeRemaining -= Time.deltaTime;
+            timeImage.fillAmount = GameManager.core.timeRemaining / GameManager.core.maxTime;
+            float displayTimeRemaining = (Mathf.Round(GameManager.core.timeRemaining * 100)) / 100;
+            bottomText.text = "Time Remaining:" + displayTimeRemaining;
+        }
     }
     void UpdateLives()
     {
-        float displayLives = (Mathf.Round(GameManager.core.Lives));
-        Lives.text = "lives:" + displayLives;
+        if (Lives != null)
+        {
+            float displayLives = (Mathf.Round(GameManager.core.Lives));
+            Lives.text = "lives:" + displayLives;
+        }
     }
     void UpdateScore()
-    { 
-        float displayScore = (Mathf.Round(GameManager.core.Score));
-        Score.text = "Score:" + displayScore;
+    {
+        if (Score != null)
+        {
+            float displayScore = (Mathf.Round(GameManager.core.Score));
+            Score.text = "Score:" + displayScore;
+        }
     }
     void UpdateHealth()
     {

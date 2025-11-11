@@ -4,6 +4,8 @@ public class EnemyController : MonoBehaviour
 {
     public Pawn asteroid;
     public Pawn uFO;
+    public Pawn baby;
+    public Pawn him;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

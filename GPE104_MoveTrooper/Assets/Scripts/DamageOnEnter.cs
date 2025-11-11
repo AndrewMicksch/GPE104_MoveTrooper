@@ -8,7 +8,9 @@ public class DamageOnEnter : MonoBehaviour
     public bool destroyMutual;
     public bool isUFO;
     public bool isAsteroid;
+    public bool isBaby;
     public float damageDone;
+    public GameObject spawner;
     private AudioSource hum;
     private AudioSource crash;
     private AudioClip passiveHum;
@@ -16,7 +18,9 @@ public class DamageOnEnter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spawner = GameManager.core.hazardSpawn;
         GameManager.core.damageZones.Add(this);
+        GetComponent<GameObject>();
         hum = this.GetComponent<AudioSource>();
         passiveHum = GameManager.core.passiveHum;
         hum.clip = passiveHum;
@@ -27,7 +31,7 @@ public class DamageOnEnter : MonoBehaviour
         {
             GameManager.core.uFOsInPlay.Add(this);
         }
-        if(isAsteroid != false)
+        if(isAsteroid != false && isBaby != false)
         {
             GameManager.core.asteroidsInPlay.Add(this);
         }
@@ -46,16 +50,25 @@ public class DamageOnEnter : MonoBehaviour
         {
             GameManager.core.uFOsInPlay.Remove(this);
         }
-        if (isAsteroid != false)
+        if (isAsteroid != false && isBaby != true)
+        {
+            SetLocation();
+            GameManager.core.asteroidsInPlay.Remove(this);
+            SpawnHazards.spawner.SpawnChildren();
+        }
+        if (isBaby != false)
         {
             GameManager.core.asteroidsInPlay.Remove(this);
         }
     }
-    
-    
+
+    void SetLocation()
+    {
+        SpawnHazards.spawner.spawnBabyPos = new Vector3(this.transform.position.x, this.transform.position.y);
+    }
     void OnTriggerEnter2D (Collider2D other)
     {
-        
+        DamageOnEnter otherEnter = other.gameObject.GetComponent<DamageOnEnter>();
         //check if should kill.
         if (isInstantKill)
         {
@@ -81,7 +94,7 @@ public class DamageOnEnter : MonoBehaviour
             }
 
         }
-        else
+        else if (otherEnter == false)
         {
             //deal damage
             Debug.Log("bump");
@@ -102,11 +115,6 @@ public class DamageOnEnter : MonoBehaviour
             }
             
         }
-
-        
-
-
-
 
     }    
         

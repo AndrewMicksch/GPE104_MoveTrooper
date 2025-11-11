@@ -511,8 +511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0910cf3e9539dbb43b92dd24ac5a8135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComp
-  currentHP: 100
-  maxHP: 100
+  currentHP: 40
+  maxHP: 40
+  lives: 0
   player: 0
 --- !u!114 &4173559381130393186
 MonoBehaviour:
@@ -528,7 +529,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageOnEnter
   isInstantKill: 0
   destroyMutual: 0
+  isUFO: 0
+  isAsteroid: 0
+  isBaby: 0
   damageDone: 4
+  spawner: {fileID: 0}
 --- !u!114 &4036823553031232296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,8 +546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ce7cc0f9db69f419b7b2ae1d22cdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
-  point: 0
-  pointAmount: 0
+  point: 1
+  isHIM: 1
+  pointAmount: 1000
 --- !u!82 &-2831175592291822744
 AudioSource:
   m_ObjectHideFlags: 0
