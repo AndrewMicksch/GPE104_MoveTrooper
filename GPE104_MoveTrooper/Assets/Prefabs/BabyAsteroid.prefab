@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 8179423049412319285}
   - component: {fileID: 7148152828986036781}
   - component: {fileID: 8299695342951453200}
+  - component: {fileID: -2412589395319745662}
   m_Layer: 0
   m_Name: BabyAsteroid
   m_TagString: Untagged
@@ -434,6 +435,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2412589395319745662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160819341457643705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c3ee4720020da448bb8dcc4e186a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pawn
+  baseSpeed: 1
+  moveSpeed: 1
+  booster: 0
+  turnSpeed: 0
+  iFrameDuration: 0
+  health: {fileID: 0}
+  death: {fileID: 0}
+  hitbox: {fileID: 0}
+  bulletType1: {fileID: 0}
+  bulletType2: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  bulletControlToConnect: {fileID: 0}
+  bulletSpeed: 0
 --- !u!1 &8453345889133624245
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class SpawnHazards : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.core.Score >= 100 && isActive != true)
+        if (GameManager.core.Score >= GameManager.core.vicScore && isActive != true)
         {
             isActive = true;
             BossSpawn();

@@ -31,7 +31,7 @@ public class DamageOnEnter : MonoBehaviour
         {
             GameManager.core.uFOsInPlay.Add(this);
         }
-        if(isAsteroid != false && isBaby != false)
+        if(isAsteroid != false || isBaby != false)
         {
             GameManager.core.asteroidsInPlay.Add(this);
         }

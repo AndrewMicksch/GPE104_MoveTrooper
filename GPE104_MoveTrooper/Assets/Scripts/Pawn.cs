@@ -24,6 +24,7 @@ public class Pawn : MonoBehaviour
     public GameObject bulletType2;
     public GameObject spawnPoint;
     public Controller bulletControlToConnect;
+    public Vector2 pointToMoveTowards;
 
     [Header("Audio")]
     private AudioSource hum;
@@ -49,6 +50,9 @@ public class Pawn : MonoBehaviour
         hum.clip = passiveHum;
         hum.loop = true;
         hum.Play();
+        float randomX = Random.Range(GameManager.core.minX, GameManager.core.maxX);
+        float randomY = Random.Range(GameManager.core.minY, GameManager.core.maxY);
+        pointToMoveTowards = new Vector2(randomX, randomY);
       
        
     }
@@ -113,6 +117,14 @@ public class Pawn : MonoBehaviour
     public void MoveTowards(Pawn pawnToMoveTowards)
     {
         MoveTowards(pawnToMoveTowards.gameObject);
+        Vector3 moveVector = pawnToMoveTowards.gameObject.transform.position * moveSpeed;
+
+        moveVector.Normalize();
+        //multiply
+        moveVector *= moveSpeed * Time.deltaTime;
+
+        //move that vector form my current position
+        transform.position = transform.position + moveVector;
     }
 
     //Invincibility

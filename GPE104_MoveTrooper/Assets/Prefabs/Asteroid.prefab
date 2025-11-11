@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 7510715970747035676}
   - component: {fileID: 4652720140059180844}
   - component: {fileID: 4639654675049348952}
+  - component: {fileID: -3649899811382891283}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -378,7 +379,9 @@ MonoBehaviour:
   destroyMutual: 0
   isUFO: 0
   isAsteroid: 1
+  isBaby: 0
   damageDone: 2
+  spawner: {fileID: 0}
 --- !u!114 &7510715970747035676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyDeath
   point: 1
+  isHIM: 0
   pointAmount: 5
 --- !u!82 &4639654675049348952
 AudioSource:
@@ -506,3 +510,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3649899811382891283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418358170311449308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c3ee4720020da448bb8dcc4e186a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pawn
+  baseSpeed: 2
+  moveSpeed: 2
+  booster: 0
+  turnSpeed: 0
+  iFrameDuration: 0
+  health: {fileID: 0}
+  death: {fileID: 0}
+  hitbox: {fileID: 0}
+  bulletType1: {fileID: 0}
+  bulletType2: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  bulletControlToConnect: {fileID: 0}
+  bulletSpeed: 0
